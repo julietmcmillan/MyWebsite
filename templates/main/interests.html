@@ -1,0 +1,217 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+/* Interests Page Specific Styles */
+.interests {
+    padding: 8rem 5% 4rem 5%;
+    min-height: 90vh;
+    margin-top: 40px;
+    background-color: #FFE6E6;
+}
+
+.interests-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    height: 70vh;
+}
+
+.interest-card {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 3rem 2rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    min-height: 100%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.interest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.interest-card h3 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: #000000;
+}
+
+.hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    backdrop-filter: blur(8px);
+    background: rgba(255,255,255,0.95);
+    padding: 2rem;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interest-card:hover .hover-content {
+    opacity: 1;
+}
+
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    padding: 3rem;
+    align-items: center;
+    justify-items: center;
+}
+
+.language-item img {
+    width: 80px;
+    height: 80px;
+    transition: transform 0.3s ease;
+}
+
+.language-item:hover img {
+    transform: scale(1.1);
+}
+
+.passion-item {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding: 1rem;
+}
+
+.passion-logo {
+    width: 120px;
+    height: 120px;
+}
+
+.passion-text {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #333333;
+}
+
+.links {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.links h3 {
+    font-size: 2rem;
+    margin: 0;
+    color: #000000;
+}
+
+.social-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.social-links img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.social-links a:first-child img {
+    width: 90px;
+    height: 90px;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+}
+
+.passions-content {
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: #e5a4e1 #fff;
+}
+.passions-content::-webkit-scrollbar {
+    width: 8px;
+    background: #fff;
+}
+.passions-content::-webkit-scrollbar-thumb {
+    background: #e5a4e1;
+    border-radius: 6px;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="interests">
+    <div class="interests-grid">
+        <!-- Coding Languages Card -->
+        <div class="interest-card">
+            <h3>Coding Languages</h3>
+            <div class="hover-content languages-content">
+                <div class="languages-grid">
+                    {% for language in coding_languages %}
+                    <div class="language-item">
+                        <img src="{% static language.icon %}" alt="{{ language.name }}" class="language-icon">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Passions Card -->
+        <div class="interest-card">
+            <h3>Passions</h3>
+            <div class="hover-content passions-content">
+                <div class="passion-item">
+                    <img src="{% static passions.martial_arts.logo %}" alt="Z-Ultimate Logo" class="passion-logo">
+                    <div class="passion-text">
+                        <p>{{ passions.martial_arts.description }}</p>
+                    </div>
+                </div>
+                <div class="passion-item">
+                    <img src="{% static passions.campus_rec.logo %}" alt="Campus Rec Logo" class="passion-logo">
+                    <div class="passion-text">
+                        <p>{{ passions.campus_rec.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="links">
+        <h3>Links:</h3>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/juliet-mcmillan-4464851b7" target="_blank">
+                <img src="{% static 'images/linkedin-logo.png' %}" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/julietmcmillan" target="_blank">
+                <img src="{% static 'images/github-logo.svg' %}" alt="GitHub">
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %} 

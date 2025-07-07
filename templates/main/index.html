@@ -1,0 +1,157 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+.home-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100vw;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 100vh;
+  gap: 2.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.left-about {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem 0 1.5rem;
+  text-align: center;
+}
+.about-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 1.2rem;
+  font-family: 'Optima', serif;
+  letter-spacing: 1.5px;
+}
+.about-blurb {
+  font-size: 1.25rem;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-family: 'Optima', serif;
+}
+.right-shelves {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.shelf-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+}
+.shelf-row a {
+  margin: 0 18px;
+  display: flex;
+  align-items: flex-end;
+  z-index: 1;
+  line-height: 0;
+  padding-bottom: 0;
+}
+.shelf-row img {
+  display: block;
+  height: 220px;
+  width: auto;
+  margin-bottom: -56px;
+  vertical-align: bottom;
+  box-sizing: content-box;
+  object-fit: contain;
+  transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.shelf-row img:hover {
+  transform: translateY(-18px) scale(1.04);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+.shelf-bar {
+  width: 80%;
+  max-width: 700px;
+  height: 18px;
+  background: #bfa77a;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  margin-top: -8px;
+  z-index: 0;
+}
+.plant {
+  width: 80px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+  margin-bottom: -56px;
+}
+.plant-pot {
+  width: 48px;
+  height: 22px;
+  background: #B4C5E4;
+  border-radius: 0 0 18px 18px;
+}
+.plant-leaves {
+  width: 32px;
+  height: 70px;
+  background: #A3E7D8;
+  border-radius: 18px 18px 18px 18px / 36px 36px 36px 36px;
+  margin-bottom: -10px;
+}
+@media (max-width: 900px) {
+  .home-main { padding-top: 1.5rem; gap: 1.5rem; }
+  .left-about { padding: 0 0.5rem; }
+  .right-shelves { align-items: center; }
+  .shelf-row img { height: 120px; }
+  .plant { width: 40px; height: 60px; }
+  .plant-pot { width: 24px; height: 11px; border-radius: 0 0 9px 9px; }
+  .plant-leaves { width: 16px; height: 35px; border-radius: 9px 9px 9px 9px / 18px 18px 18px 18px; margin-bottom: -5px; }
+}
+</style>
+{% endblock %}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="home-main">
+    <div class="left-about">
+        <div class="about-title">Juliet McMillan</div>
+        <div class="about-blurb">
+            Hi! I am an aspiring frontend developer passionate about clean, unique web experiences. Some of my other favorite things as you can see on this page are books, plants, and the color pink!
+        </div>
+    </div>
+    <div class="right-shelves">
+        <div class="shelf-row">
+            <a href="{% url 'main:education' %}"><img src="{% static 'images/education.png' %}" alt="Education" /></a>
+            <a href="{% url 'main:projects' %}"><img src="{% static 'images/projects.png' %}" alt="Projects" /></a>
+            <div class="plant">
+                <div class="plant-leaves"></div>
+                <div class="plant-pot"></div>
+            </div>
+            <a href="{% url 'main:interests' %}"><img src="{% static 'images/interests.png' %}" alt="Interests" /></a>
+        </div>
+        <div class="shelf-bar"></div>
+        <div class="shelf-row">
+            <div class="plant">
+                <div class="plant-leaves"></div>
+                <div class="plant-pot"></div>
+            </div>
+            <a href="{% static 'resume.pdf' %}" target="_blank"><img src="{% static 'images/resume.png' %}" alt="Resume" /></a>
+        </div>
+        <div class="shelf-bar"></div>
+    </div>
+</div>
+{% endblock %} 

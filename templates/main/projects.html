@@ -1,0 +1,92 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+/* Projects Page Specific Styles */
+.projects {
+    padding: 8rem 10% 6rem 10%;
+    margin-top: 40px;
+    background-color: #FFE6E6;
+    min-height: 100vh;
+}
+
+.project-card {
+    text-align: center;
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.project-logo {
+    width: 200px;
+    margin-bottom: 2rem;
+    border-radius: 60px;
+    object-fit: contain;
+}
+
+.project-tagline {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    color: #333333;
+}
+
+.project-description {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333333;
+}
+
+.status-note {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+
+.preview-image {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="projects">
+    <div class="project-card peervue">
+        <img src="{% static 'images/peervue-logo.png' %}?v=2" alt="PeerVue Logo" class="project-logo">
+        <div class="project-content">
+            <h2>PeerVue</h2>
+            <p class="project-tagline">The only peer assessment tool you'll need to make your team excel.</p>
+            
+            <div class="project-description">
+                <p>Approved administrators can create, edit, and publish assessments and feedback for team members of any given project.</p>
+            </div>
+
+            <div class="project-status">
+                <p class="status-note">*PeerVue is currently still in the works, but will be launched in upcoming weeks. The current code repository can be provided as needed.</p>
+            </div>
+
+            <div class="project-preview">
+                <img src="{% static 'images/peervue-preview.png' %}?v=2" alt="PeerVue Interface Preview" class="preview-image">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

@@ -1,0 +1,94 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+/* Education Page Specific Styles */
+.education {
+    padding: 8rem 10% 6rem 10%;
+    margin-top: 40px;
+    background-color: #FFE6E6;
+    min-height: 100vh;
+}
+
+.education-card {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px) translateX(10px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.school-logo-link {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.school-logo-link:hover {
+    transform: scale(1.05);
+}
+
+.school-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.school-info {
+    flex: 1;
+}
+
+.school-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #000000;
+}
+
+.school-info p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    color: #333333;
+}
+
+.year {
+    font-size: 1.2rem;
+    color: #000000;
+    opacity: 0.8;
+    font-weight: 500;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="education">
+    {% for school in schools %}
+    <div class="education-card">
+        <a href="{{ school.website }}" target="_blank" class="school-logo-link">
+            <img src="{% static school.logo %}" alt="{{ school.name }} Logo" class="school-logo">
+        </a>
+        <div class="school-info">
+            <h3>{{ school.name }}</h3>
+            <p>{{ school.degree }}</p>
+            {% if school.minor %}
+            <p>{{ school.minor }}</p>
+            {% endif %}
+        </div>
+        <div class="year">{{ school.years }}</div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %} 

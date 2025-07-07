@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Juliet McMillan{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://use.typekit.net/[your-kit-code].css">
+    <style>
+    /* Shared Styles */
+    :root {
+        --pink-bg: #FFE6E6;
+        --white: #FFFFFF;
+        --black: #000000;
+        --accent-pink: #E5A4E1;
+        --nav-pink: #FFD1DC;
+        --button-pink: #FFD1DC;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Optima', serif;
+        background-color: var(--pink-bg);
+        color: var(--black);
+        min-height: 100vh;
+    }
+
+    /* Navigation */
+    .nav {
+        background-color: var(--nav-pink);
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .logo {
+        width: 60px;
+        height: 60px;
+        background-color: var(--accent-pink);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.5rem;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .nav-link {
+        text-decoration: none;
+        color: var(--black);
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .contact-button {
+        background-color: var(--white);
+        color: var(--black);
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 500;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% block nav %}
+    <nav class="nav">
+        <a href="{% url 'main:index' %}" class="logo">JM</a>
+        <div class="nav-links">
+            <a href="{% url 'main:education' %}" class="nav-link">Education</a>
+            <a href="{% url 'main:projects' %}" class="nav-link">Projects</a>
+            <a href="{% url 'main:interests' %}" class="nav-link">More About Me</a>
+            <a href="{% static 'resume.pdf' %}" class="nav-link" target="_blank">Resume</a>
+            <a href="{% url 'main:contact' %}" class="contact-button">Contact Me</a>
+        </div>
+    </nav>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html> 
