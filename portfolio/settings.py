@@ -7,7 +7,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&is%rnwpyxvpve_9668v424zsg3owd22z&gr97gwru0stdmls!'
 DEBUG = False
-ALLOWED_HOSTS = ['julietmcmillan.com', 'www.julietmcmillan.com']
+ALLOWED_HOSTS = ['julietmcmillan.onrender.com','julietmcmillan.com', 'www.julietmcmillan.com']
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
